@@ -1,0 +1,29 @@
+{
+  "name": "ookoo-ppt-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OoKoo PPT 工作台：TypeScript / Node.js 直连百炼 Qwen、整页图片 PPTX 导出",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.client.json",
+    "prestart": "npm run build",
+    "start": "node dist/server.js",
+    "pretest": "npm run build",
+    "test": "node scripts/test.js"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "dependencies": {
+    "playwright": "1.62.1",
+    "pptxgenjs": "4.0.1",
+    "sharp": "0.35.5"
+  },
+  "overrides": {
+    "image-size": "2.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2"
+  }
+}

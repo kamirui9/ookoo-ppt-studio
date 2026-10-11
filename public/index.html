@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OoKoo · PPT 工作台</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+<header class="topbar"><a class="brand" href="/" aria-label="OoKoo PPT 工作台首页"><img src="/ookoo-logo.png" width="90" height="52" alt="OoKoo Logo"><span>PPT 工作台</span></a><div class="header-actions"><button class="quiet" id="history-button">我的演示</button><button class="secondary" id="new-button">新建</button></div></header>
+<main>
+ <section id="welcome" class="welcome">
+  <h1>创建演示</h1>
+  <form id="brief-form">
+   <label for="topic">一句话主题</label><textarea id="topic" rows="2" maxlength="160" required placeholder="例如：让 AI 成为新员工的工作搭档"></textarea>
+   <label for="notes">补充说明 <span>选填</span></label><textarea id="notes" rows="3" maxlength="12000" placeholder="例如：面向新员工，演讲 10 分钟，白底新品发布会风格。这里填写整体要求。"></textarea>
+   <div class="page-settings"><label for="pages">页数</label><input id="pages" type="number" min="1" max="20" step="1" value="5" required aria-label="页数，1 到 20 页"><span>16:9</span></div>
+   <fieldset class="page-content-section"><legend>每页内容 <span>选填</span></legend><p class="page-content-hint" id="page-content-hint">填写这一页要讲什么，留空则自动规划。</p><div id="page-inputs"></div></fieldset>
+   <div class="form-bottom"><button class="primary" type="submit" id="create-button">生成 PPT</button></div>
+  </form>
+ </section>
+ <section id="workspace" class="workspace hidden">
+  <aside class="slide-sidebar"><div class="sidebar-head">页面 <span id="page-count"></span></div><div id="slides-list"></div></aside>
+  <div class="workspace-main">
+   <div class="project-heading"><h1 id="project-title"></h1><button class="primary" id="download-button">下载 PPT</button></div>
+   <div class="preview-head"><span id="slide-caption"></span><button class="quiet" id="present-button" title="全屏预览" aria-label="全屏预览">⤢</button></div>
+   <div id="preview-shell" class="preview-shell"><iframe id="preview" title="当前页面预览"></iframe></div>
+   <div class="job-row"><p id="job-status" role="status"></p><button id="generate-button" class="secondary hidden">生成剩余页面</button></div>
+   <form id="modify-form" class="modify-form"><label for="instruction">修改这一页</label><div class="modify-row"><textarea id="instruction" rows="2" maxlength="2000" placeholder="例如：标题改成“你的新搭档”，删掉副标题，背景换成黑色"></textarea><button class="secondary" id="modify-button" type="submit">更新这一页</button></div></form>
+  </div>
+ </section>
+</main>
+<dialog id="dialog"><div class="dialog-header"><h2 id="dialog-title"></h2><button class="quiet" id="dialog-close" aria-label="关闭">×</button></div><div id="dialog-content"></div></dialog>
+<div id="toast" class="toast hidden" role="status"></div>
+<div id="busy" class="busy hidden" role="status"><span class="spinner"></span><p id="busy-text"></p></div>
+<script type="module" src="/app.js"></script>
+</body></html>

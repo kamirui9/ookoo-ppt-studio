@@ -1,0 +1,16 @@
+node_modules/
+.env
+data/
+artifacts/
+*.log
+*.pid
+dist/
+.DS_Store
+.env.*
+!.env.example
+public/* 2.*
+# 本机旧样稿验收脚本依赖私有数据，不随项目源码分发。
+scripts/verify-image.js
+scripts/validate-exports.js
+scripts/validate-full-slides.js
+scripts/repair-sample-page.js

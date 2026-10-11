@@ -1,0 +1,23 @@
+services:
+  launch-studio:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3210
+      CHROMIUM_EXECUTABLE: /usr/bin/chromium
+      PPT_FONT: Noto Sans CJK SC
+    ports:
+      - "127.0.0.1:3210:3210"
+    volumes:
+      - studio_data:/app/data
+    shm_size: 256mb
+    init: true
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3210/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  studio_data:
